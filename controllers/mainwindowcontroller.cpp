@@ -51,7 +51,7 @@ QList< QList<QTableWidgetItem*> >MainWindowController::getAllWorkers()
 {
     QList< QList<QTableWidgetItem*> > workers;
     QStringList workersPassports = sqliteAdapter->readFromTable("passport", "Worker");
-    QStringList workersWages = sqliteAdapter->readFromTable("wage", "Worker");
+    //QStringList workersWages = sqliteAdapter->readFromTable("wage", "Worker", "");
 
     for(auto workerPassport : workersPassports)
     {
@@ -61,9 +61,11 @@ QList< QList<QTableWidgetItem*> >MainWindowController::getAllWorkers()
         workers.push_back(worker);
     }
 
-    for(int i = 0; i < workersWages.size(); i++)
+    for(int i = 0; i < workers.size(); i++)
     {
-        workers[i].push_back(new QTableWidgetItem(workersWages[i]));
+        QString condition = "passport = " + workersPassports[i];
+        QStringList arguments = sqliteAdapter->readFromTable("wage", "Worker", condition);
+        workers[i].push_back(new QTableWidgetItem(arguments[0]));
     }
 
     return workers;

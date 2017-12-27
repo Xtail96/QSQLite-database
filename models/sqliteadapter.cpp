@@ -64,7 +64,7 @@ QStringList SQLiteAdapter::readFromTable(QString data, QString tableName)
 QStringList SQLiteAdapter::readFromTable(QString data, QString tableName, QString condition)
 {
     QStringList response;
-    QString request = "SELECT " + data + " FROM " + tableName;
+    QString request = "SELECT " + data + " FROM " + tableName + " WHERE " + condition;
     qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
