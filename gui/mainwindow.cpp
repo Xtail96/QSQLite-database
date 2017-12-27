@@ -83,3 +83,8 @@ void MainWindow::on_updateWorkerPushButton_clicked()
 {
     AddWorkerDialog(mainWindowController, this, true).exec();
 }
+
+void MainWindow::on_addBreedPushButton_clicked()
+{
+    AddBreedDialog(mainWindowController, this).exec();
+}
