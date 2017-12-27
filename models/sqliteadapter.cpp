@@ -22,6 +22,8 @@ void SQLiteAdapter::open()
     {
         emit databaseIsOpen();
     }
+    QSqlQuery query;
+    qDebug() << query.exec("PRAGMA foreign_keys = ON;");
 
     /*qDebug() << db;
     qDebug() << db.tables();
