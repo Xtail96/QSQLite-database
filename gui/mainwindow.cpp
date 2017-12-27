@@ -126,3 +126,8 @@ void MainWindow::on_deleteBreedAction_triggered()
 {
     DeleteBreedDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_deleteCageAction_triggered()
+{
+    DeleteCageDialog(mainWindowController, this).exec();
+}

@@ -23,6 +23,7 @@ public:
 
     void insertData(QString tableName, QStringList arguments, QStringList data);
     void deleteData(QString tableName, QString key, QString value);
+    void deleteData(QString tableName, QString condition);
     void updateData(QString tableName,
                     QString updateKey,
                     QString updateValue,
