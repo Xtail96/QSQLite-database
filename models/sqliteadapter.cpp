@@ -1,0 +1,111 @@
+#include "sqliteadapter.h"
+
+SQLiteAdapter::SQLiteAdapter(QString path)
+{
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(path);
+}
+
+SQLiteAdapter::~SQLiteAdapter()
+{
+    db.close();
+}
+
+void SQLiteAdapter::open()
+{
+    if(!db.open())
+    {
+        emit databaseIsNotOpen();
+        throw std::runtime_error("database is not connected");
+    }
+    else
+    {
+        emit databaseIsOpen();
+    }
+
+    /*qDebug() << db;
+    qDebug() << db.tables();
+    qDebug() << readFromTable("weight", "Hen");
+    qDebug() << readFromTable("age", "Hen");*/
+}
+
+QStringList SQLiteAdapter::readFromTable(QString data, QString tableName)
+{
+    QStringList response;
+    QString request = "SELECT " + data + " FROM " + tableName;
+    qDebug() << request;
+    QSqlQuery query;
+    if(query.prepare(request))
+    {
+        if(query.exec())
+        {
+            if(query.lastError().text() != " ")
+            {
+                qDebug() << query.lastError().text();
+            }
+            while (query.next())
+            {
+                QString parametr = query.value(0).toString();
+                response.push_back(parametr);
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу выполнить запрос!");
+        }
+    }
+    else
+    {
+        QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
+    }
+    return response;
+}
+
+QString SQLiteAdapter::getDatabaseName()
+{
+    return db.databaseName();
+}
+
+QStringList SQLiteAdapter::getTablesNames()
+{
+    return db.tables();
+}
+
+void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QStringList data)
+{
+    QString request = "INSERT INTO " + tableName + "(";
+    unsigned int argumentsLength = arguments.length();
+    for(unsigned int i = 0; i < argumentsLength - 1; i++)
+    {
+        QString tmp = arguments[i] + ", ";
+        request += tmp;
+    }
+    request += arguments[argumentsLength - 1] + ") VALUES (";
+    unsigned int dataLength = data.length();
+    for(unsigned int i = 0; i < dataLength - 1; i++)
+    {
+        QString tmp = data[i] + ", ";
+        request += tmp;
+    }
+    request += data[dataLength - 1] + ")";
+    qDebug() << request;
+    QSqlQuery query;
+    if(query.prepare(request))
+    {
+        if(query.exec())
+        {
+            if(query.lastError().text() != " ")
+            {
+                qDebug() << query.lastError().text();
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу выполнить запрос!");
+        }
+    }
+    else
+    {
+        QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
+    }
+}
