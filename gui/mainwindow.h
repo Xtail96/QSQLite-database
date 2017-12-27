@@ -37,6 +37,7 @@ private slots:
     void setupDatabaseWidgets();
     void on_addWorkerPushButton_clicked();
     void on_deleteWorkerPushButton_clicked();
+    void on_updateWorkerPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

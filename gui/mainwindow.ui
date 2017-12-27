@@ -151,21 +151,21 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_4">
-           <item row="4" column="0">
+           <item row="5" column="0">
             <widget class="QPushButton" name="addHenPushButton">
              <property name="text">
               <string>Добавить курицу</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QPushButton" name="addCagePushButton">
              <property name="text">
               <string>Добавить клетку</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="4" column="0">
             <widget class="QPushButton" name="addBreedPushButton">
              <property name="text">
               <string>Добавить породу</string>
@@ -179,10 +179,17 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
+           <item row="2" column="0">
             <widget class="QPushButton" name="deleteWorkerPushButton">
              <property name="text">
               <string>Удалить работника</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="updateWorkerPushButton">
+             <property name="text">
+              <string>Редактировать зарплату</string>
              </property>
             </widget>
            </item>

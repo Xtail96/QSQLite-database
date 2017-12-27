@@ -14,7 +14,7 @@ class AddWorkerDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddWorkerDialog(MainWindowController* _controler, QWidget *parent = 0);
+    explicit AddWorkerDialog(MainWindowController* _controler, QWidget *parent = 0, bool _isUpdate = false);
     ~AddWorkerDialog();
 
 private slots:
@@ -24,6 +24,9 @@ private:
     Ui::AddWorkerDialog *ui;
 
     MainWindowController* controller;
+    bool isUpdate;
+
+    void fillFields();
 };
 
 #endif // ADDWORKERDIALOG_H

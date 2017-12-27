@@ -134,3 +134,28 @@ void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
         QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
     }
 }
+
+void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString updateValue, QString findKey, QString findValue)
+{
+    QString request = "UPDATE " + tableName + " SET " + updateKey + " = " + updateValue + " WHERE " + findKey + " = " + findValue;
+    qDebug() << request;
+    QSqlQuery query;
+    if(query.prepare(request))
+    {
+        if(query.exec())
+        {
+            if(query.lastError().text() != " ")
+            {
+                qDebug() << query.lastError().text();
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу выполнить запрос!");
+        }
+    }
+    else
+    {
+        QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
+    }
+}

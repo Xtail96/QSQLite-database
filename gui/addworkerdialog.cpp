@@ -1,12 +1,17 @@
 #include "addworkerdialog.h"
 #include "ui_addworkerdialog.h"
 
-AddWorkerDialog::AddWorkerDialog(MainWindowController *_controler, QWidget *parent) :
+AddWorkerDialog::AddWorkerDialog(MainWindowController *_controler, QWidget *parent, bool _isUpdate) :
     QDialog(parent),
     ui(new Ui::AddWorkerDialog),
-    controller(_controler)
+    controller(_controler),
+    isUpdate(_isUpdate)
 {
     ui->setupUi(this);
+    if(isUpdate)
+    {
+        fillFields();
+    }
 }
 
 AddWorkerDialog::~AddWorkerDialog()
@@ -29,5 +34,17 @@ void AddWorkerDialog::on_buttonBox_accepted()
         passport,
         wage
     };
-    controller->getSqliteAdapter()->insertData(tableName, arguments, data);
+
+    if(!isUpdate)
+    {
+        controller->getSqliteAdapter()->insertData(tableName, arguments, data);
+    }
+    else
+    {
+        controller->getSqliteAdapter()->updateData(tableName, arguments[1], wage, arguments[0], passport);
+    }
+}
+
+void AddWorkerDialog::fillFields()
+{
 }
