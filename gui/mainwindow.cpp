@@ -73,3 +73,8 @@ void MainWindow::on_addWorkerPushButton_clicked()
 {
     AddWorkerDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_deleteWorkerPushButton_clicked()
+{
+   DeleteWorkerDialog(mainWindowController, this).exec();
+}

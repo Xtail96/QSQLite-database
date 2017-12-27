@@ -5,6 +5,7 @@
 
 #include "./controllers/mainwindowcontroller.h"
 #include "./gui/addworkerdialog.h"
+#include "./gui/deleteworkerdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,7 +24,6 @@ private:
 
     MainWindowController *mainWindowController;
 
-
     void setupWidgets();
     void setupStatusBar();
     void setupTablesList();
@@ -34,9 +34,9 @@ private slots:
     void showDatabaseConnected();
     void showDatabaseTitle();
 
-
     void setupDatabaseWidgets();
     void on_addWorkerPushButton_clicked();
+    void on_deleteWorkerPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

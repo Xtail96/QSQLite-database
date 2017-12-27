@@ -28,14 +28,17 @@ SOURCES += \
         gui/mainwindow.cpp \
     models/sqliteadapter.cpp \
     controllers/mainwindowcontroller.cpp \
-    gui/addworkerdialog.cpp
+    gui/addworkerdialog.cpp \
+    gui/deleteworkerdialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
     models/sqliteadapter.h \
     controllers/mainwindowcontroller.h \
-    gui/addworkerdialog.h
+    gui/addworkerdialog.h \
+    gui/deleteworkerdialog.h
 
 FORMS += \
         gui/mainwindow.ui \
-    gui/addworkerdialog.ui
+    gui/addworkerdialog.ui \
+    gui/deleteworkerdialog.ui

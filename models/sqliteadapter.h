@@ -21,6 +21,7 @@ public:
     QStringList getTablesNames();
 
     void insertData(QString tableName, QStringList arguments, QStringList data);
+    void deleteData(QString tableName, QString key, QString value);
 
 signals:
     void databaseIsOpen();
