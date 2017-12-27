@@ -31,6 +31,7 @@ public:
 signals:
     void databaseIsOpen();
     void databaseIsNotOpen();
+    void databaseStateIsChanged();
 private:
     QSqlDatabase db;
 };

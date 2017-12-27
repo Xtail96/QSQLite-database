@@ -108,6 +108,7 @@ void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QString
     {
         QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
     }
+    emit databaseStateIsChanged();
 }
 
 void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
@@ -133,6 +134,7 @@ void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
     {
         QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
     }
+    emit databaseStateIsChanged();
 }
 
 void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString updateValue, QString findKey, QString findValue)
@@ -158,4 +160,5 @@ void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString upd
     {
         QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
     }
+    emit databaseStateIsChanged();
 }

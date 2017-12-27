@@ -29,12 +29,6 @@ void MainWindow::setupStatusBar()
     ui->statusBar->setStyleSheet("background-color: #333; color: #00bb00");
 }
 
-void MainWindow::setupTablesList()
-{
-    QStringList databaseTables = mainWindowController->getTablesNames();
-    ui->tablesListWidget->addItems(databaseTables);
-}
-
 void MainWindow::setupMainWindowController()
 {
     mainWindowController = new MainWindowController();
@@ -42,34 +36,39 @@ void MainWindow::setupMainWindowController()
     connect(mainWindowController->getSqliteAdapter(), SIGNAL(databaseIsNotOpen()), this, SLOT(showDatabaseDisconnected()));
     connect(mainWindowController->getSqliteAdapter(), SIGNAL(databaseIsOpen()), this, SLOT(setupDatabaseWidgets()));
     mainWindowController->openDatabase();
-
 }
 
-void MainWindow::showWorkers()
+void MainWindow::updateWorkers()
 {
     QList< QList<QTableWidgetItem*> > workers = mainWindowController->getAllWorkers();
-    ui->dataTableWidget->clear();
+    ui->workersTableWidget->clear();
     QStringList labels = {
         "Паспортные данные",
         "Заработная плата"
     };
-    ui->dataTableWidget->setColumnCount(labels.size());
-    ui->dataTableWidget->setHorizontalHeaderLabels(labels);
-    ui->dataTableWidget->setRowCount(workers.size());
-    for(int i = 0; i < ui->dataTableWidget->rowCount(); i++)
+    ui->workersTableWidget->setColumnCount(labels.size());
+    ui->workersTableWidget->setHorizontalHeaderLabels(labels);
+    ui->workersTableWidget->setRowCount(workers.size());
+    for(int i = 0; i < ui->workersTableWidget->rowCount(); i++)
     {
-        for(int j = 0; j < ui->dataTableWidget->columnCount(); j++)
+        for(int j = 0; j < ui->workersTableWidget->columnCount(); j++)
         {
-            ui->dataTableWidget->setItem(i, j, workers[i][j]);
+            ui->workersTableWidget->setItem(i, j, workers[i][j]);
         }
     }
 
-    ui->dataTableWidget->resizeColumnsToContents();
+    ui->workersTableWidget->resizeColumnsToContents();
+}
+
+void MainWindow::updateHens()
+{
+
 }
 
 void MainWindow::setupDatabaseWidgets()
 {
-    setupTablesList();
+    update();
+    connect(mainWindowController->getSqliteAdapter(), SIGNAL(databaseStateIsChanged()), this, SLOT(update()));
 }
 
 void MainWindow::showDatabaseDisconnected()
@@ -91,19 +90,10 @@ void MainWindow::showDatabaseTitle()
     this->setWindowTitle(mainWindowController->getDatabaseName());
 }
 
-void MainWindow::on_tablesListWidget_itemClicked(QListWidgetItem *item)
+void MainWindow::update()
 {
-    QString table = item->text();
-    if(table == "Worker")
-    {
-        showWorkers();
-    }
-    else
-    {
-        ui->dataTableWidget->clear();
-        ui->dataTableWidget->setColumnCount(0);
-        ui->dataTableWidget->setRowCount(0);
-    }
+    updateHens();
+    updateWorkers();
 }
 
 void MainWindow::on_exitAction_triggered()

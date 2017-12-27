@@ -29,17 +29,20 @@ private:
 
     void setupWidgets();
     void setupStatusBar();
-    void setupTablesList();
     void setupMainWindowController();
-    void showWorkers();
 
 private slots:
     void showDatabaseDisconnected();
     void showDatabaseConnected();
     void showDatabaseTitle();
 
+
+
+    void update();
+    void updateWorkers();
+    void updateHens();
+
     void setupDatabaseWidgets();
-    void on_tablesListWidget_itemClicked(QListWidgetItem *item);
     void on_exitAction_triggered();
     void on_addWorkerAction_triggered();
     void on_deleteWorkerAction_triggered();
