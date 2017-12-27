@@ -16,6 +16,7 @@ public:
     void open();
 
     QStringList readFromTable(QString data, QString tableName);
+    QStringList readFromTable(QString data, QString tableName, QString condition);
 
     QString getDatabaseName();
     QStringList getTablesNames();

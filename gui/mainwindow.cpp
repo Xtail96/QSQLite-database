@@ -58,6 +58,7 @@ void MainWindow::updateWorkers()
     }
 
     ui->workersTableWidget->resizeColumnsToContents();
+    ui->workersTableWidget->verticalHeader()->hide();
 }
 
 void MainWindow::updateHens()

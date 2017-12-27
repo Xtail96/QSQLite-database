@@ -61,6 +61,38 @@ QStringList SQLiteAdapter::readFromTable(QString data, QString tableName)
     return response;
 }
 
+QStringList SQLiteAdapter::readFromTable(QString data, QString tableName, QString condition)
+{
+    QStringList response;
+    QString request = "SELECT " + data + " FROM " + tableName;
+    qDebug() << request;
+    QSqlQuery query;
+    if(query.prepare(request))
+    {
+        if(query.exec())
+        {
+            if(query.lastError().text() != " ")
+            {
+                qDebug() << query.lastError().text();
+            }
+            while (query.next())
+            {
+                QString parametr = query.value(0).toString();
+                response.push_back(parametr);
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу выполнить запрос!");
+        }
+    }
+    else
+    {
+        QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
+    }
+    return response;
+}
+
 QString SQLiteAdapter::getDatabaseName()
 {
     return db.databaseName();
