@@ -7,6 +7,7 @@
 #include "./gui/addworkerdialog.h"
 #include "./gui/deleteworkerdialog.h"
 #include "./gui/addbreeddialog.h"
+#include "./gui/deletebreeddialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -40,6 +41,7 @@ private slots:
     void on_deleteWorkerPushButton_clicked();
     void on_updateWorkerPushButton_clicked();
     void on_addBreedPushButton_clicked();
+    void on_deleteBreedPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

@@ -88,3 +88,8 @@ void MainWindow::on_addBreedPushButton_clicked()
 {
     AddBreedDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_deleteBreedPushButton_clicked()
+{
+    DeleteBreedDialog(mainWindowController, this).exec();
+}
