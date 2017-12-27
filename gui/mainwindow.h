@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
 
 #include "./controllers/mainwindowcontroller.h"
 #include "./gui/addworkerdialog.h"
@@ -30,6 +31,7 @@ private:
     void setupStatusBar();
     void setupTablesList();
     void setupMainWindowController();
+    void showWorkers();
 
 private slots:
     void showDatabaseDisconnected();
@@ -42,6 +44,7 @@ private slots:
     void on_updateWorkerPushButton_clicked();
     void on_addBreedPushButton_clicked();
     void on_deleteBreedPushButton_clicked();
+    void on_tablesListWidget_itemClicked(QListWidgetItem *item);
 };
 
 #endif // MAINWINDOW_H

@@ -1,6 +1,8 @@
 #ifndef MAINWINDOWCONTROLLER_H
 #define MAINWINDOWCONTROLLER_H
 
+#include <QTableWidgetItem>
+
 #include "./models/sqliteadapter.h"
 
 class MainWindowController : public QObject
@@ -18,6 +20,7 @@ public:
     QString getDatabaseName();
     QStringList getTablesNames();
     QStringList readFromTable(QString data, QString tableName);
+    QList<QList<QTableWidgetItem *> > getAllWorkers();
 
 signals:
 

@@ -45,6 +45,28 @@ void MainWindow::setupMainWindowController()
 
 }
 
+void MainWindow::showWorkers()
+{
+    QList< QList<QTableWidgetItem*> > workers = mainWindowController->getAllWorkers();
+    ui->dataTableWidget->clear();
+    QStringList labels = {
+        "Паспортные данные",
+        "Заработная плата"
+    };
+    ui->dataTableWidget->setColumnCount(labels.size());
+    ui->dataTableWidget->setHorizontalHeaderLabels(labels);
+    ui->dataTableWidget->setRowCount(workers.size());
+    for(int i = 0; i < ui->dataTableWidget->rowCount(); i++)
+    {
+        for(int j = 0; j < ui->dataTableWidget->columnCount(); j++)
+        {
+            ui->dataTableWidget->setItem(i, j, workers[i][j]);
+        }
+    }
+
+    ui->dataTableWidget->resizeColumnsToContents();
+}
+
 void MainWindow::setupDatabaseWidgets()
 {
     setupTablesList();
@@ -92,4 +114,19 @@ void MainWindow::on_addBreedPushButton_clicked()
 void MainWindow::on_deleteBreedPushButton_clicked()
 {
     DeleteBreedDialog(mainWindowController, this).exec();
+}
+
+void MainWindow::on_tablesListWidget_itemClicked(QListWidgetItem *item)
+{
+    QString table = item->text();
+    if(table == "Worker")
+    {
+        showWorkers();
+    }
+    else
+    {
+        ui->dataTableWidget->clear();
+        ui->dataTableWidget->setColumnCount(0);
+        ui->dataTableWidget->setRowCount(0);
+    }
 }

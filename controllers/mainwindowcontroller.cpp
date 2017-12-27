@@ -47,6 +47,28 @@ QStringList MainWindowController::readFromTable(QString data, QString tableName)
     return sqliteAdapter->readFromTable(data, tableName);
 }
 
+QList< QList<QTableWidgetItem*> >MainWindowController::getAllWorkers()
+{
+    QList< QList<QTableWidgetItem*> > workers;
+    QStringList workersPassports = sqliteAdapter->readFromTable("passport", "Worker");
+    QStringList workersWages = sqliteAdapter->readFromTable("wage", "Worker");
+
+    for(auto workerPassport : workersPassports)
+    {
+        QList<QTableWidgetItem*> worker;
+        QTableWidgetItem* passport = new QTableWidgetItem(workerPassport);
+        worker.push_back(passport);
+        workers.push_back(worker);
+    }
+
+    for(int i = 0; i < workersWages.size(); i++)
+    {
+        workers[i].push_back(new QTableWidgetItem(workersWages[i]));
+    }
+
+    return workers;
+}
+
 void MainWindowController::setupSQLiteAdapter()
 {
     sqliteAdapter = new SQLiteAdapter("/Users/Xtail/Projects/labs/db/course/databases/PoultryFarm.db");
