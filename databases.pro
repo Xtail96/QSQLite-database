@@ -31,7 +31,8 @@ SOURCES += \
     gui/addworkerdialog.cpp \
     gui/deleteworkerdialog.cpp \
     gui/addbreeddialog.cpp \
-    gui/deletebreeddialog.cpp
+    gui/deletebreeddialog.cpp \
+    gui/addcagedialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
@@ -40,11 +41,13 @@ HEADERS += \
     gui/addworkerdialog.h \
     gui/deleteworkerdialog.h \
     gui/addbreeddialog.h \
-    gui/deletebreeddialog.h
+    gui/deletebreeddialog.h \
+    gui/addcagedialog.h
 
 FORMS += \
         gui/mainwindow.ui \
     gui/addworkerdialog.ui \
     gui/deleteworkerdialog.ui \
     gui/addbreeddialog.ui \
-    gui/deletebreeddialog.ui
+    gui/deletebreeddialog.ui \
+    gui/addcagedialog.ui

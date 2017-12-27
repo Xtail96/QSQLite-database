@@ -21,6 +21,7 @@ public:
     QStringList getTablesNames();
     QStringList readFromTable(QString data, QString tableName);
     QList<QList<QTableWidgetItem *> > getAllWorkers();
+    QStringList getAllWorkersList();
 
 signals:
 

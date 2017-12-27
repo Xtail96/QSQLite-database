@@ -71,6 +71,11 @@ QList< QList<QTableWidgetItem*> >MainWindowController::getAllWorkers()
     return workers;
 }
 
+QStringList MainWindowController::getAllWorkersList()
+{
+    return sqliteAdapter->readFromTable("passport", "Worker");
+}
+
 void MainWindowController::setupSQLiteAdapter()
 {
     sqliteAdapter = new SQLiteAdapter("/Users/Xtail/Projects/labs/db/course/databases/PoultryFarm.db");

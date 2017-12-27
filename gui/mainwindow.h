@@ -9,6 +9,7 @@
 #include "./gui/deleteworkerdialog.h"
 #include "./gui/addbreeddialog.h"
 #include "./gui/deletebreeddialog.h"
+#include "./gui/addcagedialog.h"
 
 namespace Ui {
 class MainWindow;

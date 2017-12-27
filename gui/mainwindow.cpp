@@ -114,7 +114,7 @@ void MainWindow::on_deleteWorkerAction_triggered()
 
 void MainWindow::on_addCageAction_triggered()
 {
-
+    AddCageDialog(mainWindowController, this).exec();
 }
 
 void MainWindow::on_addBreedAction_triggered()
