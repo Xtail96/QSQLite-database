@@ -142,67 +142,6 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QFrame" name="frame">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="6" column="0">
-            <widget class="QPushButton" name="addHenPushButton">
-             <property name="text">
-              <string>Добавить курицу</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QPushButton" name="addCagePushButton">
-             <property name="text">
-              <string>Добавить клетку</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QPushButton" name="addBreedPushButton">
-             <property name="text">
-              <string>Добавить породу</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="addWorkerPushButton">
-             <property name="text">
-              <string>Добавить работника</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="deleteWorkerPushButton">
-             <property name="text">
-              <string>Удалить работника</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="updateWorkerPushButton">
-             <property name="text">
-              <string>Редактировать зарплату</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QPushButton" name="deleteBreedPushButton">
-             <property name="text">
-              <string> Удалить породу</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -218,6 +157,25 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="addWorkerAction"/>
+    <addaction name="deleteWorkerAction"/>
+    <addaction name="separator"/>
+    <addaction name="addCageAction"/>
+    <addaction name="deleteCageAction"/>
+    <addaction name="separator"/>
+    <addaction name="addBreedAction"/>
+    <addaction name="deleteBreedAction"/>
+    <addaction name="separator"/>
+    <addaction name="addHenAction"/>
+    <addaction name="deleteHenAction"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -228,6 +186,51 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="addWorkerAction">
+   <property name="text">
+    <string>Добавить работника</string>
+   </property>
+  </action>
+  <action name="deleteWorkerAction">
+   <property name="text">
+    <string>Удалить работника</string>
+   </property>
+  </action>
+  <action name="addCageAction">
+   <property name="text">
+    <string>Добавить клетку</string>
+   </property>
+  </action>
+  <action name="deleteCageAction">
+   <property name="text">
+    <string>Удалить клетку</string>
+   </property>
+  </action>
+  <action name="addBreedAction">
+   <property name="text">
+    <string>Добавить породу</string>
+   </property>
+  </action>
+  <action name="deleteBreedAction">
+   <property name="text">
+    <string>Удалить породу</string>
+   </property>
+  </action>
+  <action name="addHenAction">
+   <property name="text">
+    <string>Добавить птицу</string>
+   </property>
+  </action>
+  <action name="deleteHenAction">
+   <property name="text">
+    <string>Удалить птицу</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

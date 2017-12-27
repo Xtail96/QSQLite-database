@@ -39,12 +39,13 @@ private slots:
     void showDatabaseTitle();
 
     void setupDatabaseWidgets();
-    void on_addWorkerPushButton_clicked();
-    void on_deleteWorkerPushButton_clicked();
-    void on_updateWorkerPushButton_clicked();
-    void on_addBreedPushButton_clicked();
-    void on_deleteBreedPushButton_clicked();
     void on_tablesListWidget_itemClicked(QListWidgetItem *item);
+    void on_exitAction_triggered();
+    void on_addWorkerAction_triggered();
+    void on_deleteWorkerAction_triggered();
+    void on_addCageAction_triggered();
+    void on_addBreedAction_triggered();
+    void on_deleteBreedAction_triggered();
 };
 
 #endif // MAINWINDOW_H

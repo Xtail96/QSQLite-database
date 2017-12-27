@@ -91,31 +91,6 @@ void MainWindow::showDatabaseTitle()
     this->setWindowTitle(mainWindowController->getDatabaseName());
 }
 
-void MainWindow::on_addWorkerPushButton_clicked()
-{
-    AddWorkerDialog(mainWindowController, this).exec();
-}
-
-void MainWindow::on_deleteWorkerPushButton_clicked()
-{
-   DeleteWorkerDialog(mainWindowController, this).exec();
-}
-
-void MainWindow::on_updateWorkerPushButton_clicked()
-{
-    AddWorkerDialog(mainWindowController, this, true).exec();
-}
-
-void MainWindow::on_addBreedPushButton_clicked()
-{
-    AddBreedDialog(mainWindowController, this).exec();
-}
-
-void MainWindow::on_deleteBreedPushButton_clicked()
-{
-    DeleteBreedDialog(mainWindowController, this).exec();
-}
-
 void MainWindow::on_tablesListWidget_itemClicked(QListWidgetItem *item)
 {
     QString table = item->text();
@@ -129,4 +104,34 @@ void MainWindow::on_tablesListWidget_itemClicked(QListWidgetItem *item)
         ui->dataTableWidget->setColumnCount(0);
         ui->dataTableWidget->setRowCount(0);
     }
+}
+
+void MainWindow::on_exitAction_triggered()
+{
+    this->close();
+}
+
+void MainWindow::on_addWorkerAction_triggered()
+{
+    AddWorkerDialog(mainWindowController, this).exec();
+}
+
+void MainWindow::on_deleteWorkerAction_triggered()
+{
+    DeleteWorkerDialog(mainWindowController, this).exec();
+}
+
+void MainWindow::on_addCageAction_triggered()
+{
+
+}
+
+void MainWindow::on_addBreedAction_triggered()
+{
+    AddBreedDialog(mainWindowController, this).exec();
+}
+
+void MainWindow::on_deleteBreedAction_triggered()
+{
+    DeleteBreedDialog(mainWindowController, this).exec();
 }
