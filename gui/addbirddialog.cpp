@@ -40,7 +40,7 @@ void AddBirdDialog::on_buttonBox_accepted()
     QString cageNumber = QString::number(cageLocation[2].toUInt());
 
     QStringList arguments = {
-        "code",
+        //"code",
         "weight",
         "age",
         "perfomance",
@@ -51,7 +51,7 @@ void AddBirdDialog::on_buttonBox_accepted()
     };
 
     QStringList data = {
-        code,
+        //code,
         weight,
         age,
         perfomance,

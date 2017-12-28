@@ -44,17 +44,42 @@ void MainWindow::updateWorkers()
     ui->workersTableWidget->clear();
     QStringList labels = {
         "Паспортные данные",
-        "Заработная плата"
+        "Заработная плата",
+        "Обслуживаемые клетки"
     };
     ui->workersTableWidget->setColumnCount(labels.size());
     ui->workersTableWidget->setHorizontalHeaderLabels(labels);
     ui->workersTableWidget->setRowCount(workers.size());
-    for(int i = 0; i < ui->workersTableWidget->rowCount(); i++)
+    for(int i = 0; i < workers.size(); i++)
     {
-        for(int j = 0; j < ui->workersTableWidget->columnCount(); j++)
+        for(int j = 0; j < workers[i].size(); j++)
         {
             ui->workersTableWidget->setItem(i, j, workers[i][j]);
         }
+    }
+
+
+    QStringList workersCages;
+    for(int i = 0; i < workers.size(); i++)
+    {
+        QString condition = "worker = " + workers[i][0]->text();
+        QStringList cagesManufactoryNumbers = mainWindowController->getSqliteAdapter()->readFromTable("manufactory_number", "Cage", condition);
+        QStringList cagesRowNumbers = mainWindowController->getSqliteAdapter()->readFromTable("row_number", "Cage", condition);
+        QStringList cagesNumbers = mainWindowController->getSqliteAdapter()->readFromTable("cage_number", "Cage", condition);
+
+        size_t length = std::min(cagesManufactoryNumbers.size(), std::min(cagesRowNumbers.size(), cagesNumbers.size()));
+        QString cages;
+        for(size_t j = 0; j < length; j++)
+        {
+            QString cage = cagesManufactoryNumbers[j] + ":" + cagesRowNumbers[j] + ":" + cagesNumbers[j];
+            cages += cage + "; ";
+        }
+        workersCages.push_back(cages);
+    }
+
+    for(size_t i = 0; i < workers.size(); i++)
+    {
+        ui->workersTableWidget->setItem(i, workers[i].size(), new QTableWidgetItem(workersCages[i]));
     }
 
     ui->workersTableWidget->resizeColumnsToContents();
