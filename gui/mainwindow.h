@@ -12,6 +12,7 @@
 #include "./gui/addcagedialog.h"
 #include "./gui/deletecagedialog.h"
 #include "./gui/addbirddialog.h"
+#include "./deletebirddialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -55,6 +56,7 @@ private slots:
     void on_deleteBreedAction_triggered();
     void on_deleteCageAction_triggered();
     void on_addHenAction_triggered();
+    void on_deleteHenAction_triggered();
 };
 
 #endif // MAINWINDOW_H

@@ -34,7 +34,8 @@ SOURCES += \
     gui/deletebreeddialog.cpp \
     gui/addcagedialog.cpp \
     gui/deletecagedialog.cpp \
-    gui/addbirddialog.cpp
+    gui/addbirddialog.cpp \
+    gui/deletebirddialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
@@ -46,7 +47,8 @@ HEADERS += \
     gui/deletebreeddialog.h \
     gui/addcagedialog.h \
     gui/deletecagedialog.h \
-    gui/addbirddialog.h
+    gui/addbirddialog.h \
+    gui/deletebirddialog.h
 
 FORMS += \
         gui/mainwindow.ui \
@@ -56,4 +58,5 @@ FORMS += \
     gui/deletebreeddialog.ui \
     gui/addcagedialog.ui \
     gui/deletecagedialog.ui \
-    gui/addbirddialog.ui
+    gui/addbirddialog.ui \
+    gui/deletebirddialog.ui

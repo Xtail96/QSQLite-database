@@ -211,3 +211,8 @@ void MainWindow::on_addHenAction_triggered()
 {
     AddBirdDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_deleteHenAction_triggered()
+{
+    DeleteBirdDialog(mainWindowController, this).exec();
+}
