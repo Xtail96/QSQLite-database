@@ -25,6 +25,7 @@ public:
     QStringList getAllBreedsList();
     QStringList getAllFreeCagesList();
     QList<QList<QTableWidgetItem *> > getAllBirds();
+    QList<QList<QTableWidgetItem *> > getAllBreeds();
 
 signals:
 

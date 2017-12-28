@@ -44,6 +44,7 @@ private slots:
     void update();
     void updateWorkers();
     void updateHens();
+    void updateBreeds();
 
     void setupDatabaseWidgets();
     void on_exitAction_triggered();

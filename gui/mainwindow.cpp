@@ -115,6 +115,31 @@ void MainWindow::updateHens()
     ui->hensTableWidget->verticalHeader()->hide();
 }
 
+void MainWindow::updateBreeds()
+{
+    QList< QList<QTableWidgetItem*> > breeds = mainWindowController->getAllBreeds();
+    ui->breedsTableWidget->clear();
+    QStringList labels = {
+        "Название",
+        "Средняя производительность",
+        "Средний вес",
+        "Номер рекомендованной диеты",
+    };
+    ui->breedsTableWidget->setColumnCount(labels.size());
+    ui->breedsTableWidget->setHorizontalHeaderLabels(labels);
+    ui->breedsTableWidget->setRowCount(breeds.size());
+    for(int i = 0; i < breeds.size(); i++)
+    {
+        for(int j = 0; j < breeds[i].size(); j++)
+        {
+            ui->breedsTableWidget->setItem(i, j, breeds[i][j]);
+        }
+    }
+
+    ui->breedsTableWidget->resizeColumnsToContents();
+    //ui->hensTableWidget->verticalHeader()->hide();
+}
+
 void MainWindow::setupDatabaseWidgets()
 {
     update();
@@ -144,6 +169,7 @@ void MainWindow::update()
 {
     updateHens();
     updateWorkers();
+    updateBreeds();
 }
 
 void MainWindow::on_exitAction_triggered()

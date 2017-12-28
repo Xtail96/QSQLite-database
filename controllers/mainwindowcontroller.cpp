@@ -144,6 +144,34 @@ QList<QList<QTableWidgetItem *> > MainWindowController::getAllBirds()
     return birds;
 }
 
+QList<QList<QTableWidgetItem *> > MainWindowController::getAllBreeds()
+{
+    QList< QList<QTableWidgetItem*> > breeds;
+    QStringList names = sqliteAdapter->readFromTable("name", "Breed");
+
+    for(auto name : names)
+    {
+        QList<QTableWidgetItem*> breed;
+        QTableWidgetItem* item = new QTableWidgetItem(name);
+        breed.push_back(item);
+        breeds.push_back(breed);
+    }
+
+    for(int i = 0; i < names.size(); i++)
+    {
+        QString condition = "name = '" + names[i] + "'";
+        QStringList averagePerfomance = sqliteAdapter->readFromTable("average_perfomance", "Breed", condition);
+        QStringList averageWeight = sqliteAdapter->readFromTable("average_weight", "Breed", condition);
+        QStringList dietNumber = sqliteAdapter->readFromTable("diet_number", "Breed", condition);
+
+        breeds[i].push_back(new QTableWidgetItem(averagePerfomance[0]));
+        breeds[i].push_back(new QTableWidgetItem(averageWeight[0]));
+        breeds[i].push_back(new QTableWidgetItem(dietNumber[0]));
+    }
+
+    return breeds;
+}
+
 void MainWindowController::setupSQLiteAdapter()
 {
     sqliteAdapter = new SQLiteAdapter("/Users/Xtail/Projects/labs/db/course/databases/PoultryFarm.db");
