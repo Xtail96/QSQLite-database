@@ -29,6 +29,7 @@ public:
                     QString updateValue,
                     QString findKey,
                     QString findValue);
+    QSqlQuery runSQL(QString request);
 
 signals:
     void databaseIsOpen();

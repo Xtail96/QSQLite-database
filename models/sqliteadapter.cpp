@@ -222,3 +222,29 @@ void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString upd
     }
     emit databaseStateIsChanged();
 }
+
+QSqlQuery SQLiteAdapter::runSQL(QString request)
+{
+    qDebug() << request;
+    QSqlQuery query;
+    if(query.prepare(request))
+    {
+        if(query.exec())
+        {
+            if(query.lastError().text() != " ")
+            {
+                qDebug() << query.lastError().text();
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу выполнить запрос!");
+        }
+    }
+    else
+    {
+        QMessageBox(QMessageBox::Warning, "Ошибка", "Не могу подготовить запрос!");
+    }
+    emit databaseStateIsChanged();
+    return query;
+}
