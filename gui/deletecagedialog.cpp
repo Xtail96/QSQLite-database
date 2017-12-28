@@ -24,8 +24,8 @@ void DeleteCageDialog::on_buttonBox_accepted()
     QString rowValue = QString::number(ui->rowLineEdit->text().toUInt());
     QString numberValue = QString::number(ui->numberLineEdit->text().toUInt());
 
-    QString condition = manufactoryKey + " = " + manufactoryValue; /* + " AND "
+    QString condition = manufactoryKey + " = " + manufactoryValue + " AND "
             + rowKey + " = " + rowValue + " AND "
-            + numberKey + " = " + numberValue;*/
+            + numberKey + " = " + numberValue;
     controller->getSqliteAdapter()->deleteData(tableName, condition);
 }

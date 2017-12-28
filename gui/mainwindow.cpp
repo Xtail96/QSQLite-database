@@ -63,7 +63,31 @@ void MainWindow::updateWorkers()
 
 void MainWindow::updateHens()
 {
+    QList< QList<QTableWidgetItem*> > birds = mainWindowController->getAllBirds();
+    ui->hensTableWidget->clear();
+    QStringList labels = {
+        "Код",
+        "Вес",
+        "Возраст",
+        "Производительность",
+        "Порода",
+        "Номер цеха",
+        "Номер ряда в цехе",
+        "Номер клетки в ряду"
+    };
+    ui->hensTableWidget->setColumnCount(labels.size());
+    ui->hensTableWidget->setHorizontalHeaderLabels(labels);
+    ui->hensTableWidget->setRowCount(birds.size());
+    for(int i = 0; i < ui->hensTableWidget->rowCount(); i++)
+    {
+        for(int j = 0; j < ui->hensTableWidget->columnCount(); j++)
+        {
+            ui->hensTableWidget->setItem(i, j, birds[i][j]);
+        }
+    }
 
+    ui->hensTableWidget->resizeColumnsToContents();
+    ui->hensTableWidget->verticalHeader()->hide();
 }
 
 void MainWindow::setupDatabaseWidgets()
@@ -130,4 +154,9 @@ void MainWindow::on_deleteBreedAction_triggered()
 void MainWindow::on_deleteCageAction_triggered()
 {
     DeleteCageDialog(mainWindowController, this).exec();
+}
+
+void MainWindow::on_addHenAction_triggered()
+{
+    AddBirdDialog(mainWindowController, this).exec();
 }
