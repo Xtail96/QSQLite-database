@@ -237,3 +237,49 @@ void MainWindow::on_fourthRequestPushButton_clicked()
 {
     FourthRequestDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_getReportAction_triggered()
+{
+    QString birdsCountRequest = "SELECT COUNT(code) FROM Hen";
+    QSqlQuery query = mainWindowController->getSqliteAdapter()->runSQL(birdsCountRequest);
+    while (query.next())
+    {
+        ui->responseTextEdit->append("Общее число птиц: " + query.value(0).toString());
+    }
+
+    QString eggsCountRequest = "SELECT SUM(perfomance) FROM Hen";
+    query = mainWindowController->getSqliteAdapter()->runSQL(eggsCountRequest);
+    while (query.next())
+    {
+        ui->responseTextEdit->append("Общее число яиц: " + query.value(0).toString());
+    }
+
+    ui->responseTextEdit->append("");
+    ui->responseTextEdit->append("Породы:");
+
+    QStringList breeds = mainWindowController->getAllBreedsList();
+    for(auto breed : breeds)
+    {
+        ui->responseTextEdit->append("      Порода: " + breed);
+        QString condition = "name = '" + breed + "'";
+        QStringList perfomance = mainWindowController->getSqliteAdapter()->readFromTable("average_perfomance", "Breed", condition);
+        ui->responseTextEdit->append("              Средняя производительность = " + perfomance[0]);
+
+        condition = "breed = '" + breed + "'";
+        QStringList birdsCount = mainWindowController->getSqliteAdapter()->readFromTable("COUNT(code)", "Hen", condition);
+        ui->responseTextEdit->append("              Число птиц данной породы = " + birdsCount[0]);
+    }
+
+    ui->responseTextEdit->append("");
+    size_t workersCount = mainWindowController->getAllWorkersList().size();
+    ui->responseTextEdit->append("Общее число работников: " + QString::number(workersCount));
+    ui->responseTextEdit->append("Распределение работников по цехам:");
+
+    QString workersByManufactory = "SELECT manufactory_number, GROUP_CONCAT(DISTINCT(worker)) FROM Cage GROUP BY manufactory_number";
+    query = mainWindowController->getSqliteAdapter()->runSQL(workersByManufactory);
+    while (query.next())
+    {
+        ui->responseTextEdit->append("              В цеху №" + query.value(0).toString() + " работают: " + query.value(1).toString() + query.value(2).toString());
+    }
+
+}

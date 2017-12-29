@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>807</width>
+    <width>819</width>
     <height>600</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <item row="1" column="0">
      <widget class="QTabWidget" name="mainTabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="dashboardTab">
        <attribute name="title">
@@ -257,7 +257,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>807</width>
+     <width>819</width>
      <height>22</height>
     </rect>
    </property>
@@ -276,6 +276,8 @@
     <addaction name="separator"/>
     <addaction name="addHenAction"/>
     <addaction name="deleteHenAction"/>
+    <addaction name="separator"/>
+    <addaction name="getReportAction"/>
     <addaction name="separator"/>
     <addaction name="exitAction"/>
    </widget>
@@ -333,6 +335,11 @@
   <action name="exitAction">
    <property name="text">
     <string>Выход</string>
+   </property>
+  </action>
+  <action name="getReportAction">
+   <property name="text">
+    <string>Отчет</string>
    </property>
   </action>
  </widget>

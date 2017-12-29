@@ -65,6 +65,7 @@ private slots:
     void on_secondRequestPushButton_clicked();
     void on_thirdRequestPushButton_clicked();
     void on_fourthRequestPushButton_clicked();
+    void on_getReportAction_triggered();
 };
 
 #endif // MAINWINDOW_H
