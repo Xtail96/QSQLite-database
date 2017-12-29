@@ -122,7 +122,7 @@ void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QString
         request += tmp;
     }
     request += data[dataLength - 1] + ")";
-    //qDebug() << request;
+    qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -147,8 +147,8 @@ void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QString
 
 void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
 {
-    QString request = "DELETE FROM " + tableName + " WHERE " + key + " = " + value;
-    //qDebug() << request;
+    QString request = "DELETE FROM " + tableName + " WHERE " + key + " = " + value + ";";
+    qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -173,8 +173,8 @@ void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
 
 void SQLiteAdapter::deleteData(QString tableName, QString condition)
 {
-    QString request = "DELETE FROM " + tableName + " WHERE " + condition;
-    //qDebug() << request;
+    QString request = "DELETE FROM " + tableName + " WHERE " + condition + ";";
+    qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
