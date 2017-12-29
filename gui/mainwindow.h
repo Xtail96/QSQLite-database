@@ -15,6 +15,7 @@
 #include "./deletebirddialog.h"
 #include "./firstrequestdialog.h"
 #include "./secondrequestdialog.h"
+#include "./thirdrequestdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -61,6 +62,7 @@ private slots:
     void on_deleteHenAction_triggered();
     void on_firstRequestPushButton_clicked();
     void on_secondRequestPushButton_clicked();
+    void on_thirdRequestPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

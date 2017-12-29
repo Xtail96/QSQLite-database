@@ -226,3 +226,8 @@ void MainWindow::on_secondRequestPushButton_clicked()
 {
     SecondRequestDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_thirdRequestPushButton_clicked()
+{
+    ThirdRequestDialog(mainWindowController, this).exec();
+}

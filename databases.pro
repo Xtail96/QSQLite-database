@@ -37,7 +37,8 @@ SOURCES += \
     gui/addbirddialog.cpp \
     gui/deletebirddialog.cpp \
     gui/firstrequestdialog.cpp \
-    gui/secondrequestdialog.cpp
+    gui/secondrequestdialog.cpp \
+    gui/thirdrequestdialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
@@ -52,7 +53,8 @@ HEADERS += \
     gui/addbirddialog.h \
     gui/deletebirddialog.h \
     gui/firstrequestdialog.h \
-    gui/secondrequestdialog.h
+    gui/secondrequestdialog.h \
+    gui/thirdrequestdialog.h
 
 FORMS += \
         gui/mainwindow.ui \
@@ -65,4 +67,5 @@ FORMS += \
     gui/addbirddialog.ui \
     gui/deletebirddialog.ui \
     gui/firstrequestdialog.ui \
-    gui/secondrequestdialog.ui
+    gui/secondrequestdialog.ui \
+    gui/thirdrequestdialog.ui
