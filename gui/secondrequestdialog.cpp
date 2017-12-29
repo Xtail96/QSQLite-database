@@ -18,24 +18,24 @@ SecondRequestDialog::~SecondRequestDialog()
 void SecondRequestDialog::on_buttonBox_accepted()
 {
     QString breed = ui->breedsComboBox->currentText();
-    QString requestAdditional = "SELECT COUNT(cage_manufactory) FROM Hen WHERE breed = '" + breed + "'";
-    QString requestGeneral = "SELECT cage_manufactory FROM Hen WHERE breed = '" + breed + "' "
-            "GROUP BY cage_manufactory HAVING COUNT(cage_manufactory) = MAX("+ requestAdditional +");";
+
+    QString request = "SELECT cage_manufactory, COUNT(cage_manufactory) FROM Hen WHERE breed = '" + breed + "' GROUP BY cage_manufactory ORDER BY COUNT(cage_manufactory) DESC;";
 
     QString response;
 
-    QSqlQuery query = controller->getSqliteAdapter()->runSQL(requestGeneral);
+    QSqlQuery query = controller->getSqliteAdapter()->runSQL(request);
     while (query.next())
     {
-        qDebug() << query.value(0).toString() << ":" << query.value("manufactory_max").toString();
+        QString tmp = "Птиц породы " + breed + " больше всего в цехе #" + query.value(0).toString() + "("+ query.value(1).toString() +")";
+        response = tmp;
+        break;
+        qDebug() << "Hen";
+        for(int i = 0; i < 3; i++)
+        {
+            qDebug() << query.value(i).toString();
+        }
+        qDebug() << "----";
     }
-
-    /*size_t count = std::min(quantity.size(), codes.size());
-    for(size_t i = 0; i < count; i++)
-    {
-        QString tmp = "От птицы с кодом №" + codes[i] + " получают " + quantity[i] + " яиц \n";
-        response += tmp;
-    }*/
 
     QMessageBox(QMessageBox::Information, "Ответ", response).exec();
 }
