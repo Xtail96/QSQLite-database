@@ -85,23 +85,13 @@ QStringList MainWindowController::getAllFreeCagesList()
 {
     QStringList freeCages;
 
-    QStringList bookedManufactoryNumbers = sqliteAdapter->readFromTable("cage_manufactory", "Hen");
-    QStringList bookedRowNumbers = sqliteAdapter->readFromTable("cage_row", "Hen");
-    QStringList bookedCagesNumbersInRow = sqliteAdapter->readFromTable("cage_number", "Hen");
-
-    /*QString condition = "manufactory_number != " + bookedManufactoryNumbers + "AND" +
-            "row_number != " + bookedRowNumbers + "AND" +
-            "cage_number != " + bookedCagesNumbersInRow;*/
-
-    QStringList freeManufactoryNumbers = sqliteAdapter->readFromTable("manufactory_number", "Cage");
-    QStringList freeRowNumbers = sqliteAdapter->readFromTable("row_number", "Cage");
-    QStringList freeCageNumbers = sqliteAdapter->readFromTable("cage_number", "Cage");
-
-    size_t length = std::min(freeManufactoryNumbers.size(), std::min(freeRowNumbers.size(), freeCageNumbers.size()));
-
-    for(size_t i = 0; i < length; i++)
+    QString request = "SELECT manufactory_number, row_number, cage_number FROM Cage"
+            " EXCEPT SELECT cage_manufactory, cage_row, cage_number FROM Hen";
+    QSqlQuery query = sqliteAdapter->runSQL(request);
+    while (query.next())
     {
-        QString freeCage = freeManufactoryNumbers[i] + ":" + freeRowNumbers[i] + ":" + freeCageNumbers[i];
+        QString freeCage;
+        freeCage += query.value("manufactory_number").toString() + ":" + query.value("row_number").toString() + ":" + query.value("cage_number").toString();
         freeCages.push_back(freeCage);
     }
 

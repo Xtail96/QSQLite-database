@@ -35,7 +35,7 @@ QStringList SQLiteAdapter::readFromTable(QString data, QString tableName)
 {
     QStringList response;
     QString request = "SELECT " + data + " FROM " + tableName;
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -67,7 +67,7 @@ QStringList SQLiteAdapter::readFromTable(QString data, QString tableName, QStrin
 {
     QStringList response;
     QString request = "SELECT " + data + " FROM " + tableName + " WHERE " + condition;
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -122,7 +122,7 @@ void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QString
         request += tmp;
     }
     request += data[dataLength - 1] + ")";
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -148,7 +148,7 @@ void SQLiteAdapter::insertData(QString tableName, QStringList arguments, QString
 void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
 {
     QString request = "DELETE FROM " + tableName + " WHERE " + key + " = " + value;
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -174,7 +174,7 @@ void SQLiteAdapter::deleteData(QString tableName, QString key, QString value)
 void SQLiteAdapter::deleteData(QString tableName, QString condition)
 {
     QString request = "DELETE FROM " + tableName + " WHERE " + condition;
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -200,7 +200,7 @@ void SQLiteAdapter::deleteData(QString tableName, QString condition)
 void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString updateValue, QString findKey, QString findValue)
 {
     QString request = "UPDATE " + tableName + " SET " + updateKey + " = " + updateValue + " WHERE " + findKey + " = " + findValue;
-    qDebug() << request;
+    //qDebug() << request;
     QSqlQuery query;
     if(query.prepare(request))
     {
@@ -226,8 +226,9 @@ void SQLiteAdapter::updateData(QString tableName, QString updateKey, QString upd
 QSqlQuery SQLiteAdapter::runSQL(QString request)
 {
     qDebug() << request;
+    QString tmp = request;
     QSqlQuery query;
-    if(query.prepare(request))
+    if(query.prepare(tmp))
     {
         if(query.exec())
         {
