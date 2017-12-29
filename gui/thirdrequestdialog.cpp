@@ -29,5 +29,6 @@ void ThirdRequestDialog::on_buttonBox_accepted()
         QString tmp = "Птица с кодом #" + query.value("code").toString() + " находится в клетке #" + cageTmp +"\n";
         response += tmp;
     }
-    QMessageBox(QMessageBox::Information, "Ответ", response).exec();
+    controller->setBuffer(response);
+    //QMessageBox(QMessageBox::Information, "Ответ", response).exec();
 }

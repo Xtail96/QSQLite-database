@@ -162,6 +162,16 @@ QList<QList<QTableWidgetItem *> > MainWindowController::getAllBreeds()
     return breeds;
 }
 
+void MainWindowController::setBuffer(const QString &value)
+{
+    buffer = value;
+}
+
+QString MainWindowController::getBuffer() const
+{
+    return buffer;
+}
+
 void MainWindowController::setupSQLiteAdapter()
 {
     sqliteAdapter = new SQLiteAdapter("/Users/Xtail/Projects/labs/db/course/databases/PoultryFarm.db");

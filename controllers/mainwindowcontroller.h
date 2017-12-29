@@ -27,11 +27,16 @@ public:
     QList<QList<QTableWidgetItem *> > getAllBirds();
     QList<QList<QTableWidgetItem *> > getAllBreeds();
 
+    void setBuffer(const QString &value);
+
+    QString getBuffer() const;
+
 signals:
 
 private:
     SQLiteAdapter* sqliteAdapter;
     QString path = "./PoultryFarm.db";
+    QString buffer;
 
     void setupSQLiteAdapter();
 };

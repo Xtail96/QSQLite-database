@@ -230,6 +230,7 @@ void MainWindow::on_secondRequestPushButton_clicked()
 void MainWindow::on_thirdRequestPushButton_clicked()
 {
     ThirdRequestDialog(mainWindowController, this).exec();
+    ui->responseTextEdit->setText(mainWindowController->getBuffer());
 }
 
 void MainWindow::on_fourthRequestPushButton_clicked()
