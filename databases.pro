@@ -36,7 +36,8 @@ SOURCES += \
     gui/deletecagedialog.cpp \
     gui/addbirddialog.cpp \
     gui/deletebirddialog.cpp \
-    gui/firstrequestdialog.cpp
+    gui/firstrequestdialog.cpp \
+    gui/secondrequestdialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
     gui/deletecagedialog.h \
     gui/addbirddialog.h \
     gui/deletebirddialog.h \
-    gui/firstrequestdialog.h
+    gui/firstrequestdialog.h \
+    gui/secondrequestdialog.h
 
 FORMS += \
         gui/mainwindow.ui \
@@ -62,4 +64,5 @@ FORMS += \
     gui/deletecagedialog.ui \
     gui/addbirddialog.ui \
     gui/deletebirddialog.ui \
-    gui/firstrequestdialog.ui
+    gui/firstrequestdialog.ui \
+    gui/secondrequestdialog.ui

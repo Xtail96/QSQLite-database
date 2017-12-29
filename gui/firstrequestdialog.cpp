@@ -22,18 +22,17 @@ void FirstRequestDialog::on_buttonBox_accepted()
     QString age = QString::number(ui->ageLineEdit->text().toUInt());
 
     QString condition = "weight = " + weight + " AND " + "breed = '" + breed + "' AND " + "age = " + age;
-    QStringList quantity = controller->getSqliteAdapter()->readFromTable("perfomance", "Hen", condition);
-    QStringList codes = controller->getSqliteAdapter()->readFromTable("code", "Hen", condition);
+
+    QString request = "SELECT code, perfomance FROM Hen WHERE " + condition + ";";
 
     QString response;
 
-    size_t count = std::min(quantity.size(), codes.size());
-    for(size_t i = 0; i < count; i++)
+    QSqlQuery query = controller->getSqliteAdapter()->runSQL(request);
+    while (query.next())
     {
-        QString tmp = "От птицы с кодом №" + codes[i] + " получают " + quantity[i] + " яиц \n";
+        QString tmp = "От птицы с кодом #" + query.value("code").toString() + " получают " + query.value("perfomance").toString() + " яиц \n";
         response += tmp;
     }
-
     QMessageBox(QMessageBox::Information, "Ответ", response).exec();
 }
 
