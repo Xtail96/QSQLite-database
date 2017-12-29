@@ -24,6 +24,7 @@ private:
     Ui::DeleteWorkerDialog *ui;
 
     MainWindowController* controller;
+    void fillFields();
 };
 
 #endif // DELETEWORKERDIALOG_H
