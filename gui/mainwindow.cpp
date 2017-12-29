@@ -216,3 +216,8 @@ void MainWindow::on_deleteHenAction_triggered()
 {
     DeleteBirdDialog(mainWindowController, this).exec();
 }
+
+void MainWindow::on_firstRequestPushButton_clicked()
+{
+    FirstRequestDialog(mainWindowController, this).exec();
+}

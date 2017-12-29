@@ -18,7 +18,7 @@
     <item row="1" column="0">
      <widget class="QTabWidget" name="mainTabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="dashboardTab">
        <attribute name="title">
@@ -181,63 +181,63 @@
             <number>5</number>
            </property>
            <item row="2" column="0">
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="thirdRequestPushButton">
              <property name="text">
               <string>В каких клетках находятся куры указанного возраста с заданным номером диеты</string>
              </property>
             </widget>
            </item>
            <item row="8" column="0">
-            <widget class="QPushButton" name="pushButton_8">
+            <widget class="QPushButton" name="ninethRequestPushButton">
              <property name="text">
               <string>Какова для каждой породы разница между показателями породы и средними показателями по птицефабрике</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="firstRequestPushButton">
              <property name="text">
               <string>Какое количество яиц получают от каждой курицы данного веса, породы, возраста</string>
              </property>
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="fifthRequestPushButton">
              <property name="text">
               <string>Среднее количество яиц, которое получает в день каждый работник от обслуживаемых им кур</string>
              </property>
             </widget>
            </item>
            <item row="6" column="0">
-            <widget class="QPushButton" name="pushButton_6">
+            <widget class="QPushButton" name="sevethRequestPushButton">
              <property name="text">
               <string>Сколько кур каждой породы в каждом цехе</string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="QPushButton" name="pushButton_5">
+            <widget class="QPushButton" name="sixRequestPushButton">
              <property name="text">
               <string>В каком цехе находится курица, от которой получают больше всего яиц</string>
              </property>
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QPushButton" name="pushButton_9">
+            <widget class="QPushButton" name="fourthRequestPushButton">
              <property name="text">
               <string>Сколько яиц в день приносят куры указанного работника</string>
              </property>
             </widget>
            </item>
            <item row="7" column="0">
-            <widget class="QPushButton" name="pushButton_7">
+            <widget class="QPushButton" name="eightRequestPushButton">
              <property name="text">
               <string>Какое количество кур обслуживает каждый работник</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="secondRequestPushButton">
              <property name="text">
               <string>В каком цехе наибольшее количество кур определенной породы</string>
              </property>

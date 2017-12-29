@@ -13,6 +13,7 @@
 #include "./gui/deletecagedialog.h"
 #include "./gui/addbirddialog.h"
 #include "./deletebirddialog.h"
+#include "./firstrequestdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -57,6 +58,7 @@ private slots:
     void on_deleteCageAction_triggered();
     void on_addHenAction_triggered();
     void on_deleteHenAction_triggered();
+    void on_firstRequestPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H
