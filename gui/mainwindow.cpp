@@ -282,4 +282,29 @@ void MainWindow::on_getReportAction_triggered()
         ui->responseTextEdit->append("              В цеху №" + query.value(0).toString() + " работают: " + query.value(1).toString() + query.value(2).toString());
     }
 
+    QString filename = QFileDialog::getSaveFileName(0, "Выберите место сохранения прогрммы", "", "*.txt");
+    if(filename.length() > 0)
+    {
+        QFile file(filename);
+        if(!file.open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Файл по адресу " + filename + "не удалось открыть при создании").exec();
+        }
+        else
+        {
+            file.close();
+        }
+        if(QFileInfo::exists(filename))
+        {
+            if(file.open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+            {
+                file.write(ui->responseTextEdit->toPlainText().toUtf8());
+            }
+        }
+        else
+        {
+            QMessageBox(QMessageBox::Warning, "Ошибка", "Файл не удалось создать").exec();
+        }
+    }
+    ui->responseTextEdit->clear();
 }

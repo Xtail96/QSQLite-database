@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
+#include <QFileDialog>
 
 #include "./controllers/mainwindowcontroller.h"
 #include "./gui/addworkerdialog.h"
