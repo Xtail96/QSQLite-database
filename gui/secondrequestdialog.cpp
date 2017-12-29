@@ -19,7 +19,7 @@ void SecondRequestDialog::on_buttonBox_accepted()
 {
     QString breed = ui->breedsComboBox->currentText();
 
-    QString request = "SELECT cage_manufactory, COUNT(cage_manufactory) FROM Hen WHERE breed = '" + breed + "' GROUP BY cage_manufactory ORDER BY COUNT(cage_manufactory) DESC;";
+    QString request = "SELECT cage_manufactory, COUNT(cage_manufactory) FROM Hen WHERE breed = '" + breed + "' GROUP BY cage_manufactory ORDER BY COUNT(cage_manufactory) DESC LIMIT 1;";
 
     QString response;
 
@@ -28,13 +28,13 @@ void SecondRequestDialog::on_buttonBox_accepted()
     {
         QString tmp = "Птиц породы " + breed + " больше всего в цехе #" + query.value(0).toString() + "("+ query.value(1).toString() +")";
         response = tmp;
-        break;
-        qDebug() << "Hen";
+        //break;
+        /*qDebug() << "Hen";
         for(int i = 0; i < 3; i++)
         {
             qDebug() << query.value(i).toString();
         }
-        qDebug() << "----";
+        qDebug() << "----";*/
     }
 
     QMessageBox(QMessageBox::Information, "Ответ", response).exec();
