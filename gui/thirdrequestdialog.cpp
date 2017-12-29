@@ -16,10 +16,11 @@ ThirdRequestDialog::~ThirdRequestDialog()
 
 void ThirdRequestDialog::on_buttonBox_accepted()
 {
-    QString age = QString::number(ui->ageLineEdit->text().toUInt());
+    QString minAge = QString::number(ui->minAgeLineEdit->text().toDouble());
+    QString maxAge = QString::number(ui->maxAgeLineEdit->text().toDouble());
     QString dietNumber = QString::number(ui->dietNumberLineEdit->text().toUInt());
 
-    QString request = "SELECT Hen.code, Hen.cage_manufactory, Hen.cage_row, Hen.cage_number, Hen.breed FROM Hen WHERE Hen.age = " + age + " GROUP BY Hen.code HAVING Hen.breed = (SELECT Breed.name FROM Breed WHERE Breed.diet_number = " + dietNumber + ");";
+    QString request = "SELECT Hen.code, Hen.cage_manufactory, Hen.cage_row, Hen.cage_number, Hen.breed FROM Hen WHERE Hen.age >= " + minAge + " AND Hen.age <= " + maxAge + " GROUP BY Hen.code HAVING Hen.breed = (SELECT Breed.name FROM Breed WHERE Breed.diet_number = " + dietNumber + ");";
     QString response;
     QSqlQuery query = controller->getSqliteAdapter()->runSQL(request);
     while (query.next())
