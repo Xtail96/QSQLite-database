@@ -16,6 +16,7 @@
 #include "./firstrequestdialog.h"
 #include "./secondrequestdialog.h"
 #include "./thirdrequestdialog.h"
+#include "./fourthrequestdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -63,6 +64,7 @@ private slots:
     void on_firstRequestPushButton_clicked();
     void on_secondRequestPushButton_clicked();
     void on_thirdRequestPushButton_clicked();
+    void on_fourthRequestPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

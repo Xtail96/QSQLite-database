@@ -38,7 +38,8 @@ SOURCES += \
     gui/deletebirddialog.cpp \
     gui/firstrequestdialog.cpp \
     gui/secondrequestdialog.cpp \
-    gui/thirdrequestdialog.cpp
+    gui/thirdrequestdialog.cpp \
+    gui/fourthrequestdialog.cpp
 
 HEADERS += \
         gui/mainwindow.h \
@@ -54,7 +55,8 @@ HEADERS += \
     gui/deletebirddialog.h \
     gui/firstrequestdialog.h \
     gui/secondrequestdialog.h \
-    gui/thirdrequestdialog.h
+    gui/thirdrequestdialog.h \
+    gui/fourthrequestdialog.h
 
 FORMS += \
         gui/mainwindow.ui \
@@ -68,4 +70,5 @@ FORMS += \
     gui/deletebirddialog.ui \
     gui/firstrequestdialog.ui \
     gui/secondrequestdialog.ui \
-    gui/thirdrequestdialog.ui
+    gui/thirdrequestdialog.ui \
+    gui/fourthrequestdialog.ui

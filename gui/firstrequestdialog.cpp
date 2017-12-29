@@ -17,11 +17,15 @@ FirstRequestDialog::~FirstRequestDialog()
 
 void FirstRequestDialog::on_buttonBox_accepted()
 {
-    QString weight = QString::number(ui->weightLineEdit->text().toUInt());
-    QString breed = ui->breedsComboBox->currentText();
-    QString age = QString::number(ui->ageLineEdit->text().toUInt());
+    QString minWeight = QString::number(ui->minWeightLineEdit->text().toDouble());
+    QString maxWeight = QString::number(ui->maxWeightLineEdit->text().toDouble());
 
-    QString condition = "weight = " + weight + " AND " + "breed = '" + breed + "' AND " + "age = " + age;
+    QString breed = ui->breedsComboBox->currentText();
+
+    QString minAge = QString::number(ui->minAgeLineEdit->text().toDouble());
+    QString maxAge = QString::number(ui->maxAgeLineEdit->text().toDouble());
+
+    QString condition = "weight >= " + minWeight + " AND weight <= " + maxWeight + " AND " + "breed = '" + breed + "' AND " + "age >= " + minAge + " AND age <= " + maxAge ;
 
     QString request = "SELECT code, perfomance FROM Hen WHERE " + condition + ";";
 
